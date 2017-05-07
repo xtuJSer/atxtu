@@ -5,10 +5,15 @@
       <p>每日定期更新，数据来源于湘大官方教务系统</p>
     </header>
 
-    <!--<transition name="fade" mode="out-in">
-      <router-view class="view"></router-view>
-    </transition>-->
+    <transition name="fade" mode="out-in">
+      <div class="item-list">
+        <transition-group tag="ul" name="item">
+          <item-card v-for="(item, name) in itemList" :key="name" :item="item" :name="name"></item-card>
+        </transition-group>
+      </div>
+    </transition>
 
+    <Loading :isLoading="isLoading"></Loading>
   </div>
 </template>
 
@@ -18,17 +23,21 @@ import axios from 'axios'
 import mockData from '../mock.js'
 import { formatData } from './filter'
 
+import ItemCard from './components/ItemCard'
+import Loading from './components/Loading'
+
 export default {
   name: 'app',
 
   data () {
     return {
-      lists: null
+      itemList: null,
+      isLoading: true
     }
   },
 
   beforeMount () {
-    this.lists = formatData(mockData)
+    this.itemList = formatData(mockData)
   },
 
   methods: {
@@ -39,12 +48,17 @@ export default {
         withCredentials: true
       })
       .then(res => {
-        this.lists = formatData(res.data)
+        this.itemList = formatData(res.data)
       })
       .catch(err => {
         throw new Error(err)
       })
     }
+  },
+
+  components: {
+    ItemCard,
+    Loading
   }
 }
 </script>
@@ -79,15 +93,20 @@ header
   h1
     font-size: 40px
     text-shadow: -3px 3px 0 rgba(0,0,0,.1)
-.view
-  width: $mobile-width
-  padding: 30px 0
-  margin: 0 auto
-  position: relative
+// .view
+//   width: $mobile-width
+//   padding: 30px 0
+//   margin: 0 auto
+//   position: relative
 .fade-enter-active, .fade-leave-active
   transition: all .2s ease
 .fade-enter, .fade-leave-active
   opacity: 0
+
+.item-list
+  width: $mobile-width
+  padding: 30px 0
+  margin: 0 auto
 
 @media (max-width: $mobile-width)
   header nav

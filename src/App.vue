@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <h1>湘大空闲教室</h1>
-      <p>每日定期更新，数据来源于湘大官方教务系统</p>
+      <p>数据来源于湘大教污系统</p>
     </header>
 
     <transition name="fade" mode="out-in">
@@ -100,6 +100,7 @@ header
   h1
     font-size: 40px
     text-shadow: -3px 3px 0 rgba(0,0,0,.1)
+
 .fade-enter-active, .fade-leave-active
   transition: all .2s ease
 .fade-enter, .fade-leave-active
@@ -111,10 +112,9 @@ header
   position: relative
 
 @media (max-width: $mobile-width)
-  header nav
-    padding: 15px 3%
-    a
-      margin-right: .8rem !important
+  header
+    p
+      font-size: 13px
   .item-list
     width: 94%
     padding: $list-top 0 3%

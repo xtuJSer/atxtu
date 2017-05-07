@@ -16,7 +16,7 @@
 import axios from 'axios'
 // import { fetchURL } from './config'
 import mockData from '../mock.js'
-import formatData from './filter'
+import { formatData } from './filter'
 
 export default {
   name: 'app',

@@ -67,7 +67,6 @@ export default {
 
 <style lang="stylus">
 $mobile-width = 768px
-$list-top = 160px
 
 *
   padding: 0
@@ -92,11 +91,10 @@ header
   background: linear-gradient(to bottom, #5793f2, #4688f1)
   color: #fff
   text-align: center
-  padding: 40px
+  padding: 40px 0 50vh
+  margin-bottom: -50vh
   box-sizing: border-box
-  position: absolute
-  width: 100%
-  height: 68vh
+
   h1
     font-size: 40px
     text-shadow: -3px 3px 0 rgba(0,0,0,.1)
@@ -107,7 +105,7 @@ header
   opacity: 0
 .item-list
   width: $mobile-width
-  padding: $list-top 0 30px
+  padding: 30px 0
   margin: 0 auto
   position: relative
 
@@ -117,5 +115,5 @@ header
       font-size: 13px
   .item-list
     width: 94%
-    padding: $list-top 0 3%
+    padding: 3% 0
 </style>

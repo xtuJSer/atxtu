@@ -19,8 +19,8 @@
 
 <script>
 import axios from 'axios'
-// import { fetchURL } from './config'
-import mockData from '../mock.js'
+import { fetchURL } from './config'
+// import mockData from '../mock.js'
 import { formatData } from './filter'
 
 import ItemCard from './components/ItemCard'
@@ -37,7 +37,8 @@ export default {
   },
 
   beforeMount () {
-    this.itemList = formatData(mockData)
+    // this.itemList = formatData(mockData)
+    this.fetch(fetchURL)
   },
 
   methods: {
@@ -49,6 +50,7 @@ export default {
       })
       .then(res => {
         this.itemList = formatData(res.data)
+        this.isLoading = false
       })
       .catch(err => {
         throw new Error(err)
@@ -65,6 +67,7 @@ export default {
 
 <style lang="stylus">
 $mobile-width = 768px
+$list-top = 160px
 
 *
   padding: 0
@@ -90,30 +93,29 @@ header
   color: #fff
   text-align: center
   padding: 40px
+  box-sizing: border-box
+  position: absolute
+  width: 100%
+  height: 68vh
   h1
     font-size: 40px
     text-shadow: -3px 3px 0 rgba(0,0,0,.1)
-// .view
-//   width: $mobile-width
-//   padding: 30px 0
-//   margin: 0 auto
-//   position: relative
 .fade-enter-active, .fade-leave-active
   transition: all .2s ease
 .fade-enter, .fade-leave-active
   opacity: 0
-
 .item-list
   width: $mobile-width
-  padding: 30px 0
+  padding: $list-top 0 30px
   margin: 0 auto
+  position: relative
 
 @media (max-width: $mobile-width)
   header nav
-      padding: 15px 3%
+    padding: 15px 3%
     a
       margin-right: .8rem !important
-  .view
+  .item-list
     width: 94%
-    padding: 3% 0
+    padding: $list-top 0 3%
 </style>

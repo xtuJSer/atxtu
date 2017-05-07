@@ -1,5 +1,5 @@
 <template>
-  <div class="loading ball-pulse-sync" v-if="isLoading">
+  <div class="loading ball-beat" v-if="isLoading">
     <div></div>
     <div></div>
     <div></div>
@@ -39,5 +39,5 @@ export default {
   transform: translate(-50%, -50%)
   z-index: 998
   // & > div
-    // background-color: #41b783 !important
+    // background-color: #4688f1 !important
 </style>

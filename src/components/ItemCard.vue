@@ -28,12 +28,14 @@ export default {
   box-shadow: 1px 2px 5px rgba(0,0,0, .1)
   box-sizing: border-box
   border-radius: 2px
+  &:last-child
+    margin-bottom: 0
   h2
     text-align: center
     padding-bottom: 10px
     border-bottom: 2px dashed #eee
   .item-content
-    padding: 20px 0
+    padding-top: 20px
     tr
       display: block
       margin-bottom: 10px
@@ -41,4 +43,6 @@ export default {
         margin-bottom: 0
     .item-time
       width: 54px
+      color: #4688f1
+      font-weight: 500
 </style>

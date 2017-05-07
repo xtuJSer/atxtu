@@ -5,9 +5,10 @@
       <p>每日定期更新，数据来源于湘大官方教务系统</p>
     </header>
 
-    <transition name="fade" mode="out-in">
+    <!--<transition name="fade" mode="out-in">
       <router-view class="view"></router-view>
-    </transition>
+    </transition>-->
+
   </div>
 </template>
 

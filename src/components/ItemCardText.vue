@@ -1,5 +1,5 @@
 <template>
-  <li class="item-card">
+  <li class="item-card-text">
     <h2>{{ name }}</h2>
     <div class="item-content">
       <tr v-for="(room, time) in item">
@@ -13,14 +13,13 @@
 <script>
 export default {
   mounted () {
-    // console.log(this.item)
   },
   props: ['item', 'name']
 }
 </script>
 
 <style lang="stylus">
-.item-card
+.item-card-text
   width: 100%
   padding: 20px
   background: #fff

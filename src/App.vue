@@ -8,25 +8,28 @@
         <span>展现方式</span>
       </label>
       <select name="" id="switchType" v-model="itemListType">
-        <option value="0">文字</option>
-        <option value="1">图表</option>
+        <option :value="1">图表</option>
+        <option :value="0">文字</option>
       </select>
 
       <label for="switchDay">
         <span>选择时间</span>
       </label>
       <select name="" id="switchDay" v-model="itemListDay">
-        <option value="0">今天</option>
-        <option value="1">明天</option>
+        <option :value="0">今天</option>
+        <option :value="1">明天</option>
       </select>
 
     </header>
 
     <transition name="fade" mode="out-in">
-      <div class="item-list">
-        <transition-group tag="ul" name="item">
-          <item-card v-for="(item, name) in itemList" :key="name" :item="item" :name="name"></item-card>
-        </transition-group>
+      <div class="item-list" v-if="!isLoading">
+        <ul v-if="itemListType === 0">
+          <item-card-text v-for="(item, name) in itemList" :key="name" :item="item" :name="name"></item-card-text>
+        </ul>
+        <ul v-else>
+          <item-card-chart v-for="(items, name) in itemList" :key="name" :items="items" :name="name"></item-card-chart>
+        </ul>
       </div>
     </transition>
 
@@ -40,7 +43,8 @@ import { fetchURL } from './config'
 // import mockData from '../mock.js'
 import { formatData } from './filter'
 
-import ItemCard from './components/ItemCard'
+import ItemCardText from './components/ItemCardText'
+import ItemCardChart from './components/ItemCardChart'
 import Loading from './components/Loading'
 
 export default {
@@ -51,7 +55,7 @@ export default {
       itemList: null,
       isLoading: true,
       itemListDay: 0,             // 默认为今天
-      itemListType: 0             // 默认为图表类型，即获取 name 类型的数据
+      itemListType: 1             // 默认为文字类型，即获取 time 类型的数据
     }
   },
 
@@ -62,6 +66,8 @@ export default {
 
   methods: {
     fetch (url, day, byName) {
+      this.isLoading = true
+      // this.itemList = []
       axios({
         url,
         method: 'post',
@@ -91,7 +97,8 @@ export default {
   },
 
   components: {
-    ItemCard,
+    ItemCardText,
+    ItemCardChart,
     Loading
   }
 }

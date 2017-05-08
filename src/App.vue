@@ -4,6 +4,7 @@
       <h1>湘大空闲教室</h1>
       <p>数据来源于湘大教污系统</p>
       <p style="font-size: 12px">广告：震惊！连空闲教室平台都搞起竞价排名！即日起，选出您自习最优先考虑的 3 个教学楼，为您的最爱投出宝贵一票吧 ~</p>
+      <p style="font-size: 12px">特殊使用的技巧：👇🏻下面的按钮可点按</p>
 
       <div class="selector">
         <input id="switchType" type="checkbox" :checked="itemListType" v-model="itemListType">
@@ -147,6 +148,7 @@ header
   display: block
   margin: 20px auto 0
   width: 20
+  margin-bottom: 10px
   @media (max-width: $mobild-width)
     width: 94%
   // select
@@ -173,6 +175,7 @@ header
     cursor: pointer
     width: 60px
     font-weight: 600
+    padding: 5px 0
     transition: background 0.5s linear
     border-radius: 2px
     box-sizing: border-box

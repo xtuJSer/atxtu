@@ -3,6 +3,23 @@
     <header>
       <h1>湘大空闲教室</h1>
       <p>数据来源于湘大教污系统</p>
+
+      <label for="switchType">
+        <span>展现方式</span>
+      </label>
+      <select name="" id="switchType" v-model="itemListType">
+        <option value="0">文字</option>
+        <option value="1">图表</option>
+      </select>
+
+      <label for="switchDay">
+        <span>选择时间</span>
+      </label>
+      <select name="" id="switchDay" v-model="itemListDay">
+        <option value="0">今天</option>
+        <option value="1">明天</option>
+      </select>
+
     </header>
 
     <transition name="fade" mode="out-in">
@@ -32,29 +49,44 @@ export default {
   data () {
     return {
       itemList: null,
-      isLoading: true
+      isLoading: true,
+      itemListDay: 0,             // 默认为今天
+      itemListType: 0             // 默认为图表类型，即获取 name 类型的数据
     }
   },
 
   beforeMount () {
     // this.itemList = formatData(mockData)
-    this.fetch(fetchURL)
+    this.fetch(fetchURL, this.itemListDay, this.itemListType)
   },
 
   methods: {
-    fetch (url) {
+    fetch (url, day, byName) {
       axios({
         url,
-        method: 'get',
+        method: 'post',
+        data: {
+          day,
+          byName
+        },
         withCredentials: true
       })
       .then(res => {
-        this.itemList = formatData(res.data)
+        this.itemList = byName ? res.data : formatData(res.data)
         this.isLoading = false
       })
       .catch(err => {
         throw new Error(err)
       })
+    }
+  },
+
+  watch: {
+    itemListDay (value) {
+      this.fetch(fetchURL, this.itemListDay, this.itemListType)
+    },
+    itemListType (value) {
+      this.fetch(fetchURL, this.itemListDay, this.itemListType)
     }
   },
 

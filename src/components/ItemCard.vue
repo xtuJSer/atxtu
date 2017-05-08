@@ -13,7 +13,7 @@
 <script>
 export default {
   mounted () {
-    console.log(this.item)
+    // console.log(this.item)
   },
   props: ['item', 'name']
 }

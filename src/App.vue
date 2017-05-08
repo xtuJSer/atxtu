@@ -3,23 +3,25 @@
     <header>
       <h1>湘大空闲教室</h1>
       <p>数据来源于湘大教污系统</p>
+      <p style="font-size: 12px">广告：震惊！连空闲教室平台都搞起竞价排名！即日起，选出您自习最优先考虑的 3 个教学楼，为您的最爱投出宝贵一票吧 ~</p>
 
-      <label for="switchType">
-        <span>展现方式</span>
-      </label>
-      <select name="" id="switchType" v-model="itemListType">
-        <option :value="1">图表</option>
-        <option :value="0">文字</option>
-      </select>
+      <div class="selector">
+        <label for="switchType">
+          <span>展现方式</span>
+        </label>
+        <select name="" id="switchType" v-model="itemListType">
+          <option :value="1">图表</option>
+          <option :value="0">文字</option>
+        </select>
 
-      <label for="switchDay">
-        <span>选择时间</span>
-      </label>
-      <select name="" id="switchDay" v-model="itemListDay">
-        <option :value="0">今天</option>
-        <option :value="1">明天</option>
-      </select>
-
+        <label for="switchDay">
+          <span>选择时间</span>
+        </label>
+        <select name="" id="switchDay" v-model="itemListDay">
+          <option :value="0">今天</option>
+          <option :value="1">明天</option>
+        </select>
+      </div>
     </header>
 
     <transition name="fade" mode="out-in">
@@ -136,7 +138,7 @@ header
 
   h1
     font-size: 40px
-    text-shadow: -3px 3px 0 rgba(0,0,0,.1)
+    text-shadow: -2px 2px 0 rgba(0,0,0,.1)
 
 .fade-enter-active, .fade-leave-active
   transition: all .2s ease
@@ -147,6 +149,27 @@ header
   padding: 30px 0
   margin: 0 auto
   position: relative
+
+.selector
+  display: block
+  margin: 20px auto 0
+  width: 20
+  @media (max-width: $mobild-width)
+    width: 94%
+  select
+    color: #333
+    background: #fff
+    border-radius: 4px
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075)
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+    // padding: 6px 12px
+    padding: 6px 12px
+    border: 1px solid #ccc
+    height: 34px
+    line-height: 34px
+    font-size: 14px
+    background-image: none
+    width: 80px
 
 @media (max-width: $mobile-width)
   header

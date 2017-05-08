@@ -6,27 +6,21 @@
       <p style="font-size: 12px">广告：震惊！连空闲教室平台都搞起竞价排名！即日起，选出您自习最优先考虑的 3 个教学楼，为您的最爱投出宝贵一票吧 ~</p>
 
       <div class="selector">
+        <input id="switchType" type="checkbox" :checked="itemListType" v-model="itemListType">
         <label for="switchType">
-          <span>展现方式</span>
+          <span>{{ itemListType ? '图表' : '文字' }}</span>
         </label>
-        <select name="" id="switchType" v-model="itemListType">
-          <option :value="1">图表</option>
-          <option :value="0">文字</option>
-        </select>
 
+        <input id="switchDay" type="checkbox" :checked="!itemListDay" v-model="itemListDay">
         <label for="switchDay">
-          <span>选择时间</span>
+          <span>{{ itemListDay ? '明天' : '今天' }}</span>
         </label>
-        <select name="" id="switchDay" v-model="itemListDay">
-          <option :value="0">今天</option>
-          <option :value="1">明天</option>
-        </select>
       </div>
     </header>
 
     <transition name="fade" mode="out-in">
       <div class="item-list" v-if="!isLoading">
-        <ul v-if="itemListType === 0">
+        <ul v-if="Number(itemListType) === 0">
           <item-card-text v-for="(item, name) in itemList" :key="name" :item="item" :name="name"></item-card-text>
         </ul>
         <ul v-else>
@@ -69,7 +63,6 @@ export default {
   methods: {
     fetch (url, day, byName) {
       this.isLoading = true
-      // this.itemList = []
       axios({
         url,
         method: 'post',
@@ -91,10 +84,10 @@ export default {
 
   watch: {
     itemListDay (value) {
-      this.fetch(fetchURL, this.itemListDay, this.itemListType)
+      this.fetch(fetchURL, this.itemListDay, Number(this.itemListType))
     },
     itemListType (value) {
-      this.fetch(fetchURL, this.itemListDay, this.itemListType)
+      this.fetch(fetchURL, this.itemListDay, Number(this.itemListType))
     }
   },
 
@@ -156,20 +149,40 @@ header
   width: 20
   @media (max-width: $mobild-width)
     width: 94%
-  select
-    color: #333
+  // select
+  //   color: #333
+  //   background: #fff
+  //   border-radius: 4px
+  //   box-shadow: inset 0 1px 1px rgba(0,0,0,.075)
+  //   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+  //   // padding: 6px 12px
+  //   padding: 6px 12px
+  //   border: 1px solid #ccc
+  //   height: 34px
+  //   line-height: 34px
+  //   font-size: 14px
+  //   background-image: none
+  //   width: 80px
+
+  /* 隐藏所有checkbox */
+  input[type='checkbox']
+    display: none
+
+  label
+    display: inline-block
+    cursor: pointer
+    width: 60px
+    font-weight: 600
+    transition: background 0.5s linear
+    border-radius: 2px
+    box-sizing: border-box
+    border: 1px solid #fff
+  input[type='checkbox']:not(:checked)+label
+    border: 1px dashed #fff
+  input[type='checkbox']:checked+label
     background: #fff
-    border-radius: 4px
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075)
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
-    // padding: 6px 12px
-    padding: 6px 12px
-    border: 1px solid #ccc
-    height: 34px
-    line-height: 34px
-    font-size: 14px
-    background-image: none
-    width: 80px
+    color: #4688f1
+
 
 @media (max-width: $mobile-width)
   header

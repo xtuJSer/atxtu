@@ -3,7 +3,7 @@
     <header>
       <h1>湘大空闲教室</h1>
       <p>数据来源于湘大教污系统（若数据错误是学校的锅）</p>
-      <p style="font-size: 12px">特殊使用的技巧：其实下面的按钮是可点按的。没想到吧.jpg</p>
+      <p style="font-size: 12px">特殊的使用技巧：其实下面的按钮是可点按的。没想到吧.jpg</p>
 
       <div class="selector">
         <input id="switchType" type="checkbox" :checked="itemListType" v-model="itemListType">

@@ -57,13 +57,14 @@ export default {
         if (hasFalse) {
           // this.switchTime.fill(true)
           this.switchTime = this.switchTime.map(el => true)
-          console.log(hasFalse)
         } else {
-          this.switchTime.fill(false)
+          // this.switchTime.fill(false)
+          this.switchTime = this.switchTime.map(el => false)
           this.list = JSON.parse(JSON.stringify(this.item))
         }
+      } else {
+        this.switchTime = this.switchTime.map(el => true)
       }
-
       // this.switchTime.fill(false)
       // this.list = JSON.parse(JSON.stringify(this.item))
     },

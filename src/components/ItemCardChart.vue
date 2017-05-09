@@ -4,18 +4,15 @@
     <div class="item-content">
       <table>
         <thead>
-          <tr @click.capture.stop="switchItem">
-            <th id="title" :class="{ switched: switchTime === 'title' }">
-              <!--<input :id="`switch-title-${idx}`" type="radio" :name="'switch-group-' + idx" value="title" v-model="switchTime">-->
-              <!--<label :for="`switch-title-${idx}`">-->
-                右侧选时间
-              <!--</label>-->
+          <tr>
+            <th id="title" @click="init">
+              {{ switchTime.includes(true) ? '点我取消' : '筛选时间→' }}
             </th>
-            <th v-for="(item, i) in time" :id="`time-${idx}-${i}`" :class="{ switched: switchTime === `time-${idx}-${i}` }">
-              <!--<input :id="`switch-time-${idx}-${i}`" type="radio" :name="'switch-group-' + idx" :value="`time-${idx}-${i}`" v-model="switchTime">-->
-              <!--<label :for="`switch-time-${idx}-${i}`">-->
+            <th v-for="(item, i) in time" :id="`time-${idx}-${i}`">
+              <input :id="`switch-time-${idx}-${i}`" type="checkbox" :name="'switch-group-' + idx" :value="`time-${idx}-${i}`" v-model="switchTime[i]">
+              <label :for="`switch-time-${idx}-${i}`">
                 {{ item }}
-              <!--</label>-->
+              </label>
             </th>
           </tr>
         </thead>
@@ -26,6 +23,7 @@
           </tr>
         </tbody>
       </table>
+      <p :class="[ this.list.details.length === 0 ? 'show' : 'hide' ]" class="msg">{{ this.msg }}</p>
     </div>
   </li>
 </template>
@@ -38,46 +36,64 @@ export default {
   data () {
     return {
       time: ['1-2', '3-4', '5-6', '7-8', '9-10'],
-      switchTime: 'title',
-      list: ''
+      switchTime: [],
+      list: '',
+      msg: ''
     }
   },
 
   watch: {
-    // switchTime (value) {
-    //   console.log(value)
-    // }
-  },
-
-  methods: {
-    switchItem (e) {
-      this.switchTime = e.target.id
-      let time = this.switchTime.split('-')[2]
-      if (time === undefined) {
-        this.list = this.item
-        return
-      }
-      this.sortItem(time)
-    },
-    sortItem (time) {
-      // console.log(time)
-      // this.list = this.item
+    switchTime (time) {
       this.list = JSON.parse(JSON.stringify(this.item))
 
-      let stack = []
-      for (let i = 0, len = this.list.details.length; i < len; i++) {
-        let el = this.list.details[i]
-        if (el.time[time] === '空') {
-          stack.push(this.list.details.splice(i--, 1)[0])
-          len--
+      time.forEach((timeEl, i) => {
+        if (timeEl === false) { return }
+
+        for (let j = 0, len = this.list.details.length; j < len; j++) {
+          let el = this.list.details[j]
+          if (el.time[i] === '满') {
+            this.list.details.splice(j--, 1)
+            len--
+          }
         }
-      }
-      // console.log(stack)
-      this.list.details = stack.concat(this.list.details)
+      })
+      this.list.details.length === 0 ? this.msg = '不存在的 :(' : this.msg = ''
     }
   },
 
+  methods: {
+    init () {
+      this.switchTime.fill(false)
+      this.list = JSON.parse(JSON.stringify(this.item))
+    }
+    // switchItem (e) {
+    //   this.switchTime = e.target.id
+    //   let time = this.switchTime.split('-')[2]
+    //   if (time === undefined) {
+    //     this.list = this.item
+    //     return
+    //   }
+    //   this.sortItem(time)
+    // },
+    // sortItem (time) {
+    //   this.list = JSON.parse(JSON.stringify(this.item))
+
+    //   let stack = []
+    //   for (let i = 0, len = this.list.details.length; i < len; i++) {
+    //     let el = this.list.details[i]
+    //     if (el.time[time] === '空') {
+    //       stack.push(this.list.details.splice(i--, 1)[0])
+    //       len--
+    //     }
+    //   }
+    //   // console.log(stack)
+    //   this.list.details = stack.concat(this.list.details)
+    // }
+  },
+
   created () {
+    this.switchTime.length = 5
+    this.switchTime.fill(false)
   },
 
   beforeMount () {
@@ -123,11 +139,28 @@ export default {
           background: #fff
           &:first-child
             width: 27%
-            line-height: 26px
-          &.switched, &:hover
-            transition: all .4s ease
+            line-height: 36px
             background: #41b783
             color: #fff
+
+          label
+            display: inline-block
+            cursor: pointer
+            width: 100%
+            height: 100%
+            font-weight: 600
+            padding: 5px 0
+            transition: background 0.5s linear
+            border-radius: 2px
+            box-sizing: border-box
+          input[type='checkbox']
+            display: none
+          // input[type='checkbox']:not(:checked)+label
+          //   border: 1px dashed #fff
+          input[type='checkbox']:checked+label
+            background: #41b783
+            color: #fff
+
         td
           padding: 2px 0
           font-weight: 500
@@ -139,4 +172,12 @@ export default {
             background: #4688f1
           &.busy
             background: #d85a63
+.msg
+  padding: 20px 0 10px
+  text-align: center
+  font-weight: 600
+  &.hide
+    display: none
+  &.show
+    display: block
 </style>

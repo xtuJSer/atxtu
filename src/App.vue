@@ -2,9 +2,10 @@
   <div id="app">
     <header>
       <h1>湘大空闲教室</h1>
-      <p>数据来源于湘大教污系统（若数据错误是学校的锅）</p>
-      <p style="font-size: 12px">后续填坑: 查询教学楼。</p>
-      <p style="font-size: 12px">特殊的使用技巧：下方按钮可点按。没想到吧.jpg</p>
+      <p>数据来源于湘大教污系统（若数据错误 = 学校的锅）</p>
+      <p style="font-size: 12px">后续: 查询教学楼功能。</p>
+      <p style="font-size: 12px">征集：页面配色辣眼睛？欢迎提供方案。</p>
+      <p style="font-size: 12px">技巧：下方按钮以及绿色按钮都可点按。没想到吧.jpg</p>
 
       <div class="selector">
         <input id="switchType" type="checkbox" :checked="itemListType" v-model="itemListType">

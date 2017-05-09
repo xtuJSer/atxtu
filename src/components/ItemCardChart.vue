@@ -8,7 +8,7 @@
             <th id="title" :class="{ switched: switchTime === 'title' }">
               <!--<input :id="`switch-title-${idx}`" type="radio" :name="'switch-group-' + idx" value="title" v-model="switchTime">-->
               <!--<label :for="`switch-title-${idx}`">-->
-                教室
+                右侧选时间
               <!--</label>-->
             </th>
             <th v-for="(item, i) in time" :id="`time-${idx}-${i}`" :class="{ switched: switchTime === `time-${idx}-${i}` }">
@@ -97,6 +97,7 @@ export default {
   box-shadow: 1px 2px 5px rgba(0,0,0, .1)
   box-sizing: border-box
   border-radius: 2px
+  transition: all 1s ease
   &:last-child
     margin-bottom: 0
   h2
@@ -119,13 +120,13 @@ export default {
           height: 36px
           line-height: 36px
           border-radius: 2px
-          border: 1px dashed #eee
+          background: #fff
           &:first-child
             width: 27%
             line-height: 26px
-          &.switched
-            background: #4688f1
-            border: 1px solid #4688f1
+          &.switched, &:hover
+            transition: all .4s ease
+            background: #41b783
             color: #fff
         td
           padding: 2px 0
@@ -135,7 +136,7 @@ export default {
             color: #333
             line-height: 26px
           &.free
-            background: #41b783
+            background: #4688f1
           &.busy
             background: #d85a63
 </style>

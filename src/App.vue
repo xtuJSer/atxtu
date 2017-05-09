@@ -3,7 +3,8 @@
     <header>
       <h1>湘大空闲教室</h1>
       <p>数据来源于湘大教污系统（若数据错误是学校的锅）</p>
-      <p style="font-size: 12px">特殊的使用技巧：其实下面的按钮是可点按的。没想到吧.jpg</p>
+      <p style="font-size: 12px">后续的坑，敬请期待：1.查询教学区; 2.查询教学楼; 3.查询时间段; 4.排序优先级</p>
+      <p style="font-size: 12px">特殊的使用技巧：下方按钮可点按。没想到吧.jpg</p>
 
       <div class="selector">
         <input id="switchType" type="checkbox" :checked="itemListType" v-model="itemListType">
@@ -24,7 +25,7 @@
           <item-card-text v-for="(item, name) in itemList" :key="name" :item="item" :name="name"></item-card-text>
         </ul>
         <ul v-else>
-          <item-card-chart v-for="(items, name) in itemList" :key="name" :items="items" :name="name"></item-card-chart>
+          <item-card-chart v-for="(item, name) in itemList" :key="name" :item="item"></item-card-chart>
         </ul>
       </div>
     </transition>

@@ -1,6 +1,6 @@
 <template>
   <li class="item-card-chart">
-    <h2>{{ name }}</h2>
+    <h2>{{ item.name }}</h2>
     <div class="item-content">
       <table>
         <thead>
@@ -10,9 +10,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in items">
-            <td>{{ item.room }}</td>
-            <td v-for="curTime in item.time" :class="[ curTime === '空' ? 'free' : 'busy' ]">{{ curTime }}</td>
+          <tr v-for="itemDetail in item.details">
+            <td>{{ itemDetail.room }}</td>
+            <td v-for="curTime in itemDetail.time" :class="[ curTime === '空' ? 'free' : 'busy' ]">{{ curTime }}</td>
           </tr>
         </tbody>
       </table>
@@ -31,7 +31,7 @@ export default {
     }
   },
 
-  props: ['items', 'name']
+  props: ['item']
 }
 </script>
 

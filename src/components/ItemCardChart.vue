@@ -4,13 +4,23 @@
     <div class="item-content">
       <table>
         <thead>
-          <tr>
-            <th>教室</th>
-            <th v-for="item in time">{{ item }}</th>
+          <tr @click.capture.stop="switchItem">
+            <th id="title" :class="{ switched: switchTime === 'title' }">
+              <!--<input :id="`switch-title-${idx}`" type="radio" :name="'switch-group-' + idx" value="title" v-model="switchTime">-->
+              <!--<label :for="`switch-title-${idx}`">-->
+                教室
+              <!--</label>-->
+            </th>
+            <th v-for="(item, i) in time" :id="`time-${idx}-${i}`" :class="{ switched: switchTime === `time-${idx}-${i}` }">
+              <!--<input :id="`switch-time-${idx}-${i}`" type="radio" :name="'switch-group-' + idx" :value="`time-${idx}-${i}`" v-model="switchTime">-->
+              <!--<label :for="`switch-time-${idx}-${i}`">-->
+                {{ item }}
+              <!--</label>-->
+            </th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="itemDetail in item.details">
+          <tr v-for="itemDetail in list.details">
             <td>{{ itemDetail.room }}</td>
             <td v-for="curTime in itemDetail.time" :class="[ curTime === '空' ? 'free' : 'busy' ]">{{ curTime }}</td>
           </tr>
@@ -27,11 +37,54 @@ export default {
 
   data () {
     return {
-      time: ['1-2', '3-4', '5-6', '7-8', '9-10']
+      time: ['1-2', '3-4', '5-6', '7-8', '9-10'],
+      switchTime: 'title',
+      list: ''
     }
   },
 
-  props: ['item']
+  watch: {
+    // switchTime (value) {
+    //   console.log(value)
+    // }
+  },
+
+  methods: {
+    switchItem (e) {
+      this.switchTime = e.target.id
+      let time = this.switchTime.split('-')[2]
+      if (time === undefined) {
+        this.list = this.item
+        return
+      }
+      this.sortItem(time)
+    },
+    sortItem (time) {
+      // console.log(time)
+      // this.list = this.item
+      this.list = JSON.parse(JSON.stringify(this.item))
+
+      let stack = []
+      for (let i = 0, len = this.list.details.length; i < len; i++) {
+        let el = this.list.details[i]
+        if (el.time[time] === '空') {
+          stack.push(this.list.details.splice(i--, 1)[0])
+          len--
+        }
+      }
+      // console.log(stack)
+      this.list.details = stack.concat(this.list.details)
+    }
+  },
+
+  created () {
+  },
+
+  beforeMount () {
+    this.list = JSON.parse(JSON.stringify(this.item))
+  },
+
+  props: ['item', 'idx']
 }
 </script>
 
@@ -62,9 +115,18 @@ export default {
 
         th
           width: 14.6%
+          cursor: pointer
+          height: 36px
+          line-height: 36px
+          border-radius: 2px
+          border: 1px dashed #eee
           &:first-child
             width: 27%
             line-height: 26px
+          &.switched
+            background: #4688f1
+            border: 1px solid #4688f1
+            color: #fff
         td
           padding: 2px 0
           font-weight: 500
@@ -73,7 +135,7 @@ export default {
             color: #333
             line-height: 26px
           &.free
-            background: #4688f1
+            background: #41b783
           &.busy
             background: #d85a63
 </style>

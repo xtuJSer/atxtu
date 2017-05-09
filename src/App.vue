@@ -12,7 +12,7 @@
           <span>{{ itemListType ? '图表' : '文字' }}</span>
         </label>
 
-        <input id="switchDay" type="checkbox" :checked="!itemListDay" v-model="itemListDay">
+        <input id="switchDay" type="checkbox" :checked="itemListDay" v-model="itemListDay">
         <label for="switchDay">
           <span>{{ itemListDay ? '明天' : '今天' }}</span>
         </label>
@@ -25,7 +25,7 @@
           <item-card-text v-for="(item, name) in itemList" :key="name" :item="item" :name="name"></item-card-text>
         </ul>
         <ul v-else>
-          <item-card-chart v-for="(item, name) in itemList" :key="name" :item="item"></item-card-chart>
+          <item-card-chart v-for="(item, idx) in itemList" :key="idx" :item="item" :idx="idx"></item-card-chart>
         </ul>
       </div>
     </transition>

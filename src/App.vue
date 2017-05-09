@@ -38,7 +38,7 @@
 import axios from 'axios'
 import { fetchURL } from './config'
 // import mockData from '../mock.js'
-import { formatData } from './filter'
+import { formatData, sortData } from './filter'
 
 import ItemCardText from './components/ItemCardText'
 import ItemCardChart from './components/ItemCardChart'
@@ -74,7 +74,7 @@ export default {
         withCredentials: true
       })
       .then(res => {
-        this.itemList = byName ? res.data : formatData(res.data)
+        this.itemList = byName ? sortData(res.data) : formatData(res.data)
         this.isLoading = false
       })
       .catch(err => {

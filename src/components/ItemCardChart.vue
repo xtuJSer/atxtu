@@ -5,8 +5,8 @@
       <table>
         <thead>
           <tr>
-            <th id="title" @click="init">
-              {{ switchTime.includes(true) ? '点我取消' : '筛选时间→' }}
+            <th id="title" @click.stop="init">
+              {{ switchTime.includes(true) ? (switchTime.includes(false) ? '全选' : '取消'): '筛选时间→' }}
             </th>
             <th v-for="(item, i) in time" :id="`time-${idx}-${i}`">
               <input :id="`switch-time-${idx}-${i}`" type="checkbox" :name="'switch-group-' + idx" :value="`time-${idx}-${i}`" v-model="switchTime[i]">
@@ -44,6 +44,30 @@ export default {
 
   watch: {
     switchTime (time) {
+      this.siftTime(time)
+    }
+  },
+
+  methods: {
+    init () {
+      let hasTrue = this.switchTime.includes(true)
+      let hasFalse = this.switchTime.includes(false)
+
+      if (hasTrue) {
+        if (hasFalse) {
+          // this.switchTime.fill(true)
+          this.switchTime = this.switchTime.map(el => true)
+          console.log(hasFalse)
+        } else {
+          this.switchTime.fill(false)
+          this.list = JSON.parse(JSON.stringify(this.item))
+        }
+      }
+
+      // this.switchTime.fill(false)
+      // this.list = JSON.parse(JSON.stringify(this.item))
+    },
+    siftTime (time) {
       this.list = JSON.parse(JSON.stringify(this.item))
 
       time.forEach((timeEl, i) => {
@@ -58,13 +82,6 @@ export default {
         }
       })
       this.list.details.length === 0 ? this.msg = '不存在的 :(' : this.msg = ''
-    }
-  },
-
-  methods: {
-    init () {
-      this.switchTime.fill(false)
-      this.list = JSON.parse(JSON.stringify(this.item))
     }
     // switchItem (e) {
     //   this.switchTime = e.target.id
@@ -139,7 +156,7 @@ export default {
           background: #fff
           &:first-child
             width: 27%
-            line-height: 36px
+            // line-height: 36px
             background: #41b783
             color: #fff
 
@@ -147,9 +164,9 @@ export default {
             display: inline-block
             cursor: pointer
             width: 100%
-            height: 100%
+            height: 36px
             font-weight: 600
-            padding: 5px 0
+            // padding: 5px 0
             transition: background 0.5s linear
             border-radius: 2px
             box-sizing: border-box

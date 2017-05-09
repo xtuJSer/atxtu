@@ -6,7 +6,7 @@
         <thead>
           <tr>
             <th id="title" @click.stop="init">
-              {{ switchTime.includes(true) ? (switchTime.includes(false) ? '全选' : '取消'): '筛选时间→' }}
+              {{ switchTime.indexOf(true) > -1 ? (switchTime.indexOf(false) > -1 ? '全选' : '取消'): '筛选时间→' }}
             </th>
             <th v-for="(item, i) in time" :id="`time-${idx}-${i}`">
               <input :id="`switch-time-${idx}-${i}`" type="checkbox" :name="'switch-group-' + idx" :value="`time-${idx}-${i}`" v-model="switchTime[i]">
@@ -50,8 +50,8 @@ export default {
 
   methods: {
     init () {
-      let hasTrue = this.switchTime.includes(true)
-      let hasFalse = this.switchTime.includes(false)
+      let hasTrue = this.switchTime.indexOf(true) > -1
+      let hasFalse = this.switchTime.indexOf(false) > -1
 
       if (hasTrue) {
         if (hasFalse) {

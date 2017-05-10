@@ -1,17 +1,17 @@
 <template>
   <div id="app">
+    <menu>
+      <nav>
+        <a href="https://trend.magicallu.cn/">那些事儿</a>
+        <a href="https://free.magicallu.cn/">情侣课表</a>
+        <!--<router-link :to="/about">关于</router-link>-->
+      </nav>
+    </menu>
+
     <header>
       <h1>湘大空闲教室</h1>
       <p>数据来源于湘大教务系统（数据有误 = 学校的锅）</p>
-      <p style="font-size: 12px">技巧:下方按钮以及绿色按钮都可点按。没想到吧.jpg</p>
-
-      <article class="ad">
-        <h4>😘相关推广</h4>
-        <ul>
-          <li><a href="https://trend.magicallu.cn/">湘大动态资讯</a></li>
-          <li><a href="https://free.magicallu.cn/">湘大情侣课表</a></li>
-        </ul>
-      </article>
+      <p>技巧:下方按钮以及绿色按钮都可点按。没想到吧.jpg</p>
 
       <div class="selector">
         <input id="switchType" type="checkbox" :checked="itemListType" v-model="itemListType">
@@ -156,12 +156,26 @@ ul
       font-size: 40px
       text-shadow: -2px 2px 0 rgba(0,0,0,.1)
 
-  .ad
-    font-size: 13px
-    padding-top: 10px
+  menu
+    width: 100%
+    height: 60px
+    box-shadow: 0px 1px 3px rgba(0,0,0,.16)
+    background: #fff
+    nav
+      box-sizing: border-box
+      padding: 15px 0
+      font-weight: 500
+      margin: 0 auto
+      width: $mobile-width
     a
-      text-decoration: underline
-      color: #fff
+      line-height: 30px
+      letter-spacing: .03rem
+      display: inline-block
+      vertical-align: middle
+      margin-right: 20px
+      &:hover
+        transition: all .4s ease
+        color: #4688f1
 
   .fade-enter-active, .fade-leave-active
     transition: all .2s ease
@@ -220,6 +234,8 @@ ul
     header
       p
         font-size: 13px
+    menu
+      padding: 0 10px
     .item-list
       width: 94%
       padding: 3% 0

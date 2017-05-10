@@ -161,8 +161,8 @@ ul
     height: 60px
     box-shadow: 0px 1px 3px rgba(0,0,0,.16)
     background: #fff
+    box-sizing: border-box
     nav
-      box-sizing: border-box
       padding: 15px 0
       font-weight: 500
       margin: 0 auto
@@ -234,8 +234,9 @@ ul
     header
       p
         font-size: 13px
-    menu
-      padding: 0 10px
+    nav
+      // padding: 15px 10px
+      width: 94% !important
     .item-list
       width: 94%
       padding: 3% 0

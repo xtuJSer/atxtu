@@ -1,30 +1,43 @@
 <template>
   <li class="item-card-chart">
-    <h2>{{ item.name }}</h2>
-    <div class="item-content">
-      <table>
-        <thead>
-          <tr>
-            <th id="title" @click.stop="init">
-              {{ switchTime.indexOf(true) > -1 ? (switchTime.indexOf(false) > -1 ? '全选' : '取消'): '筛选时间→' }}
-            </th>
-            <th v-for="(item, i) in time" :id="`time-${idx}-${i}`">
-              <input :id="`switch-time-${idx}-${i}`" type="checkbox" :name="'switch-group-' + idx" :value="`time-${idx}-${i}`" v-model="switchTime[i]">
-              <label :for="`switch-time-${idx}-${i}`">
-                {{ item }}
-              </label>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="itemDetail in list.details">
-            <td>{{ itemDetail.room }}</td>
-            <td v-for="curTime in itemDetail.time" :class="[ curTime === '空' ? 'free' : 'busy' ]">{{ curTime }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <p :class="[ this.list.details.length === 0 ? 'show' : 'hide' ]" class="msg">{{ this.msg }}</p>
+    <div class="tool-bar">
+      <span class="show-card" :class="[ status ? 'icon-minimize' : 'icon-maximize' ]"  @click="status = !status">
+        {{ status ? '折叠' : '展开' }}
+      </span>
+      <!--<span class="icon-heart" style="color: #d85a63"></span>-->
     </div>
+
+    <h2>
+    <!--<h2 class="name-border">-->
+      {{ item.name }}
+      <p class="msg">{{ this.list.details.length + '/' + this.item.details.length }}</p>
+    </h2>
+
+    <transition name="fade">
+      <div class="item-content" v-show="status">
+        <table>
+          <thead>
+            <tr>
+              <th id="title" @click.stop="init">
+                {{ switchTime.indexOf(true) > -1 ? (switchTime.indexOf(false) > -1 ? '全选' : '取消'): '筛选时间→' }}
+              </th>
+              <th v-for="(item, i) in time" :id="`time-${idx}-${i}`">
+                <input :id="`switch-time-${idx}-${i}`" type="checkbox" :name="'switch-group-' + idx" :value="`time-${idx}-${i}`" v-model="switchTime[i]">
+                <label :for="`switch-time-${idx}-${i}`">
+                  {{ item }}
+                </label>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="itemDetail in list.details">
+              <td>{{ itemDetail.room }}</td>
+              <td v-for="curTime in itemDetail.time" :class="[ curTime === '空' ? 'free' : 'busy' ]">{{ curTime }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </transition>
   </li>
 </template>
 
@@ -38,7 +51,8 @@ export default {
       time: ['1-2', '3-4', '5-6', '7-8', '9-10'],
       switchTime: [],
       list: '',
-      msg: ''
+      msg: '',
+      status: false
     }
   },
 
@@ -82,31 +96,8 @@ export default {
           }
         }
       })
-      this.list.details.length === 0 ? this.msg = '不存在的 :(' : this.msg = ''
+      this.list.details.length === 0 ? this.msg = '不存在的' : this.msg = ''
     }
-    // switchItem (e) {
-    //   this.switchTime = e.target.id
-    //   let time = this.switchTime.split('-')[2]
-    //   if (time === undefined) {
-    //     this.list = this.item
-    //     return
-    //   }
-    //   this.sortItem(time)
-    // },
-    // sortItem (time) {
-    //   this.list = JSON.parse(JSON.stringify(this.item))
-
-    //   let stack = []
-    //   for (let i = 0, len = this.list.details.length; i < len; i++) {
-    //     let el = this.list.details[i]
-    //     if (el.time[time] === '空') {
-    //       stack.push(this.list.details.splice(i--, 1)[0])
-    //       len--
-    //     }
-    //   }
-    //   // console.log(stack)
-    //   this.list.details = stack.concat(this.list.details)
-    // }
   },
 
   created () {
@@ -125,7 +116,7 @@ export default {
 <style lang="stylus">
 .item-card-chart
   width: 100%
-  padding: 20px
+  padding: 10px
   background: #fff
   margin-bottom: 10px
   box-shadow: 1px 2px 5px rgba(0,0,0, .1)
@@ -137,10 +128,15 @@ export default {
   h2
     text-align: center
     padding-bottom: 10px
-    border-bottom: 2px dashed #eee
+    .msg
+      font-weight: 600
+      font-size: 13px
+
   .item-content
-    padding-top: 20px
+    // padding-top: 20px
     table
+      border-top: 2px dashed #eee
+      padding-top: 20px
       width: 100%
       tr
         text-align: center
@@ -190,12 +186,20 @@ export default {
             background: #4688f1
           &.busy
             background: #d85a63
-.msg
-  padding: 20px 0 10px
-  text-align: center
-  font-weight: 600
-  &.hide
-    display: none
-  &.show
-    display: block
+
+  .tool-bar
+    font-size: 12px
+    & > *
+      cursor: pointer
+      transition: color .4s ease
+    .icon-maximize:hover
+      color: #4688f1
+    .icon-minimize:hover
+      color: #d85a63
+
+  .fade-enter-active, .fade-leave-active
+    transition: all .05s ease-in
+  .fade-enter, .fade-leave-active
+    opacity: 0
+    transform: translateY(-10%)
 </style>

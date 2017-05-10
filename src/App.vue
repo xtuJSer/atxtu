@@ -5,7 +5,8 @@
         <a href="https://trend.magicallu.cn/">那些事儿</a>
         <a href="https://free.magicallu.cn/">情侣课表</a>
         <a href="#">敬请期待</a>
-        <!--<router-link :to="/about">关于</router-link>-->
+        <router-link to="/about">关于</router-link>
+        <router-link to="/update">日志</router-link>
       </nav>
     </menu>
 

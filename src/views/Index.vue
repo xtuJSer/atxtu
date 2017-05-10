@@ -45,20 +45,20 @@ export default {
   // beforeMount () {
   // },
 
-  // watch: {
-  //   itemListDay (value) {
-  //     // this.$store.dispatch('FETCH_LIST_DATA', {
-  //     //   day: this.$store.state.itemListDay,
-  //     //   byName: this.$store.state.itemListType
-  //     // })
-  //   },
-  //   itemListType (value) {
-  //     // this.$store.dispatch('FETCH_LIST_DATA', {
-  //     //   day: this.$store.state.itemListDay,
-  //     //   byName: this.$store.state.itemListType
-  //     // })
-  //   }
-  // },
+  watch: {
+    itemListDay (value) {
+      this.$store.dispatch('FETCH_LIST_DATA', {
+        day: this.itemListDay,
+        byName: this.itemListType
+      })
+    },
+    itemListType (value) {
+      this.$store.dispatch('FETCH_LIST_DATA', {
+        day: this.itemListDay,
+        byName: this.itemListType
+      })
+    }
+  },
 
   components: {
     ItemList

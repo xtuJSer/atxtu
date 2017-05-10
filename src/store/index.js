@@ -17,7 +17,7 @@ const store = new Vuex.Store({
   actions: {
     FETCH_LIST_DATA: async ({ commit, dispatch, state }, { day, byName }) => {
       commit('SET_LIST_DAY', { day })
-      commit('SET_LIST_TYPE', { byName })
+      commit('SET_LIST_TYPE', { type: byName })
       commit('SET_LOADING', { isLoading: true })
 
       try {

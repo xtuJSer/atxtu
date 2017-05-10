@@ -11,8 +11,9 @@
 
     <header>
       <h1>湘大空闲教室</h1>
-      <p>数据来源于湘大教务系统（数据有误 == 学校的锅）</p>
-      <p>技巧：下方按钮以及绿色按钮都可点按，感谢体验!</p>
+      <p>数据来源于湘大教务系统 (数据有误 == 学校的锅)</p>
+      <p>技巧:下方按钮以及绿色按钮都可点按</p>
+      <p>即将迎来大版本变动，请坐稳... 再次感谢你们的支持!!!</p>
 
       <div class="selector">
         <input id="switchType" type="checkbox" :checked="itemListType" v-model="itemListType">

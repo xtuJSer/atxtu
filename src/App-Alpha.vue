@@ -3,8 +3,8 @@
     <menu>
       <nav>
         <router-link to="/">空闲教室</router-link>
-        <!--<router-link to="/update">日志</router-link>
-        <router-link to="/about">关于</router-link>-->
+        <!--<router-link to="/update">日志</router-link>-->
+        <router-link to="/about">关于</router-link>
         <a href="https://trend.magicallu.cn/">那些事儿</a>
         <a href="https://free.magicallu.cn/">情侣课表</a>
         <a href="#">敬请期待</a>
@@ -92,6 +92,23 @@ ul
         color: #4688f1
       &:last-child
         margin-right: 0
+
+  header
+    background: linear-gradient(to bottom, #5793f2, #4688f1)
+    color: #fff
+    text-align: center
+    padding: 30px 0 34vh
+    margin-bottom: -34vh
+    box-sizing: border-box
+    max-height: 500px
+    overflow: hidden
+
+    h1
+      font-size: 40px
+      text-shadow: -2px 2px 0 rgba(0,0,0,.1)
+
+    p
+      font-size: 14px
 
   .fade-enter-active, .fade-leave-active
     transition: all .2s ease

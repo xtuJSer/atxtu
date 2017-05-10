@@ -8,7 +8,7 @@
       <article class="ad">
         <h4>😘相关推广</h4>
         <ul>
-          <li><a href="https://trend.magicallu.cn/">湘大动态咨询</a></li>
+          <li><a href="https://trend.magicallu.cn/">湘大动态资讯</a></li>
           <li><a href="https://free.magicallu.cn/">湘大情侣课表</a></li>
         </ul>
       </article>
@@ -23,6 +23,7 @@
         <label for="switchDay">
           <span>{{ itemListDay ? '明天' : '今天' }}</span>
         </label>
+
       </div>
     </header>
 
@@ -62,6 +63,17 @@ export default {
       isLoading: true,
       itemListDay: 0,             // 默认为今天
       itemListType: 1             // 默认为文字类型，即获取 time 类型的数据
+    }
+  },
+
+  computed: {
+    // calcDay () {
+    //   let day = new Date()
+    //   return day.getFullYear() + '年' + (day.getMonth() + 1) + '月' + (day.getDate() + this.itemListDay) + '日 ' + this.getDay
+    // },
+    getDay () {
+      let day = ['日', '一', '二', '三', '四', '五', '六']
+      return '周' + day[(new Date().getDay() + this.itemListDay) % 7]
     }
   },
 

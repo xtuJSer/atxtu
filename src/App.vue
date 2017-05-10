@@ -2,8 +2,16 @@
   <div id="app">
     <header>
       <h1>湘大空闲教室</h1>
-      <p>数据来源于湘大教污系统（若数据错误 = 学校的锅）</p>
-      <p style="font-size: 12px">技巧：下方按钮以及绿色按钮都可点按。没想到吧.jpg</p>
+      <p>数据来源于湘大教务系统（数据有误 = 学校的锅）</p>
+      <p style="font-size: 12px">技巧:下方按钮以及绿色按钮都可点按。没想到吧.jpg</p>
+
+      <article class="ad">
+        <h4>😘相关推广</h4>
+        <ul>
+          <li><a href="https://trend.magicallu.cn/">湘大动态咨询</a></li>
+          <li><a href="https://free.magicallu.cn/">湘大情侣课表</a></li>
+        </ul>
+      </article>
 
       <div class="selector">
         <input id="switchType" type="checkbox" :checked="itemListType" v-model="itemListType">
@@ -135,6 +143,13 @@ ul
     h1
       font-size: 40px
       text-shadow: -2px 2px 0 rgba(0,0,0,.1)
+
+  .ad
+    font-size: 13px
+    padding-top: 10px
+    a
+      text-decoration: underline
+      color: #fff
 
   .fade-enter-active, .fade-leave-active
     transition: all .2s ease

@@ -4,14 +4,15 @@
       <nav>
         <a href="https://trend.magicallu.cn/">那些事儿</a>
         <a href="https://free.magicallu.cn/">情侣课表</a>
+        <a href="#">敬请期待</a>
         <!--<router-link :to="/about">关于</router-link>-->
       </nav>
     </menu>
 
     <header>
       <h1>湘大空闲教室</h1>
-      <p>数据来源于湘大教务系统（数据有误 = 学校的锅）</p>
-      <p>技巧:下方按钮以及绿色按钮都可点按。没想到吧.jpg</p>
+      <p>数据来源于湘大教务系统（数据有误 == 学校的锅）</p>
+      <p>技巧：下方按钮以及绿色按钮都可点按，感谢体验!</p>
 
       <div class="selector">
         <input id="switchType" type="checkbox" :checked="itemListType" v-model="itemListType">

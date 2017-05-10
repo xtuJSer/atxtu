@@ -1,6 +1,5 @@
 <template>
   <section class="index">
-
     <header>
       <h1>湘大空闲教室</h1>
       <p>数据来源于湘大教务系统 (数据有误 == 学校的锅)</p>
@@ -21,7 +20,6 @@
     </header>
 
     <item-list></item-list>
-
   </section>
 </template>
 

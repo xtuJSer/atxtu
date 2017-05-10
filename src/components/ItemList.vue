@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import ItemCardText from './components/ItemCardText'
-import ItemCardChart from './components/ItemCardChart'
+import ItemCardChart from './ItemCardChart'
+import ItemCardText from './ItemCardText'
 
 export default {
   computed: {

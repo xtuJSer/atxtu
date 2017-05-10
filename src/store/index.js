@@ -8,7 +8,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    itemList: null,
+    itemList: [],
     isLoading: true,
     itemListDay: 0,             // 默认为今天
     itemListType: 1             // 默认为文字类型，即获取 time 类型的数据
@@ -18,13 +18,13 @@ const store = new Vuex.Store({
     FETCH_LIST_DATA: async ({ commit, dispatch, state }, { day, byName }) => {
       commit('SET_LIST_DAY', { day })
       commit('SET_LIST_TYPE', { byName })
-      commit('CANCEL_LOADING', { isLoading: true })
+      commit('SET_LOADING', { isLoading: true })
 
       try {
         commit('SET_LIST_DATA', {
           list: await fetchData(classroomURL, day, byName)
         })
-        commit('CANCEL_LOADING', { isLoading: false })
+        commit('SET_LOADING', { isLoading: false })
       } catch (e) {
         throw new Error(e)
       }

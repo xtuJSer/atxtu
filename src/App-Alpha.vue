@@ -5,54 +5,19 @@
         <a href="https://trend.magicallu.cn/">那些事儿</a>
         <a href="https://free.magicallu.cn/">情侣课表</a>
         <a href="#">敬请期待</a>
+        <!--<router-link :to="/updata">日志</router-link>-->
         <!--<router-link :to="/about">关于</router-link>-->
       </nav>
     </menu>
 
-    <header>
-      <h1>湘大空闲教室</h1>
-      <p>数据来源于湘大教务系统 (数据有误 == 学校的锅)</p>
-      <p>技巧:下方按钮以及绿色按钮都可点按</p>
-      <p>即将迎来大版本变动，请坐稳... 再次感谢你们的支持!!!</p>
-
-      <div class="selector">
-        <input id="switchType" type="checkbox" :checked="itemListType" v-model="itemListType">
-        <label for="switchType">
-          <span>{{ itemListType ? '图表' : '文字' }}</span>
-        </label>
-
-        <input id="switchDay" type="checkbox" :checked="itemListDay" v-model="itemListDay">
-        <label for="switchDay">
-          <span>{{ itemListDay ? '明天' : '今天' }}</span>
-        </label>
-
-      </div>
-    </header>
-
-    <transition name="fade" mode="out-in">
-      <div class="item-list" v-if="!isLoading">
-        <ul v-if="Number(itemListType) === 0">
-          <item-card-text v-for="(item, name) in itemList" :key="name" :item="item" :name="name"></item-card-text>
-        </ul>
-        <ul v-else>
-          <item-card-chart v-for="(item, idx) in itemList" :key="idx" :item="item" :idx="idx"></item-card-chart>
-        </ul>
-      </div>
-    </transition>
+    <router-view></router-view>
 
     <Loading :isLoading="isLoading"></Loading>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-import { classroomURL } from './config'
-import { formatData, sortData } from './filter'
-
-import ItemCardText from './components/ItemCardText'
-import ItemCardChart from './components/ItemCardChart'
 import Loading from './components/Loading'
-
 import './public/style/icon.css'
 
 export default {
@@ -60,51 +25,32 @@ export default {
 
   data () {
     return {
+      itemListDay: 0,             // 默认为今天
+      itemListType: 1             // 默认为文字类型，即获取 time 类型的数据
     }
   },
 
   computed: {
+    isLoading () {
+      return this.$store.state.isLoading
+    }
   },
 
   beforeMount () {
-    // this.itemList = formatData(mockData)
-    this.fetch(classroomURL, this.itemListDay, this.itemListType)
-  },
-
-  methods: {
-    fetch (url, day, byName) {
-      this.isLoading = true
-      axios({
-        url,
-        method: 'post',
-        data: {
-          day,
-          byName
-        },
-        withCredentials: true
-      })
-      .then(res => {
-        this.itemList = byName ? sortData(res.data) : formatData(res.data)
-        this.isLoading = false
-      })
-      .catch(err => {
-        throw new Error(err)
-      })
-    }
+    this.$store.dispatch('FETCH_LIST_DATA', {
+      day: this.itemListDay,
+      byName: this.itemListType
+    })
   },
 
   watch: {
     itemListDay (value) {
-      this.fetch(classroomURL, this.itemListDay, Number(this.itemListType))
     },
     itemListType (value) {
-      this.fetch(classroomURL, this.itemListDay, Number(this.itemListType))
     }
   },
 
   components: {
-    ItemCardText,
-    ItemCardChart,
     Loading
   }
 }

@@ -18,8 +18,19 @@ import ItemCardChart from './components/ItemCardChart'
 export default {
   computed: {
     itemListType () {
+      return this.$store.state.itemListType
+    },
+    itemList () {
       return this.$store.state.itemList
+    },
+    isLoading () {
+      return this.$store.state.isLoading
     }
+  },
+
+  components: {
+    ItemCardChart,
+    ItemCardText
   }
 }
 </script>

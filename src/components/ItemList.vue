@@ -36,5 +36,11 @@ export default {
 </script>
 
 <style lang="stylus">
+$mobile-width = 768px
 
+.item-list
+  width: $mobile-width
+  padding: 30px 0
+  margin: 0 auto
+  position: relative
 </style>

@@ -42,9 +42,6 @@ export default {
   //   // }
   // },
 
-  // beforeMount () {
-  // },
-
   watch: {
     itemListDay (value) {
       this.$store.dispatch('FETCH_LIST_DATA', {
@@ -65,3 +62,47 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus">
+$mobile-width = 768px
+
+.index
+  header
+    background: linear-gradient(to bottom, #5793f2, #4688f1)
+    color: #fff
+    text-align: center
+    padding: 40px 0 50vh
+    margin-bottom: -50vh
+    box-sizing: border-box
+
+    h1
+      font-size: 40px
+      text-shadow: -2px 2px 0 rgba(0,0,0,.1)
+
+    .selector
+      display: block
+      margin: 20px auto 0
+      width: 20
+      margin-bottom: 10px
+      @media (max-width: $mobild-width)
+        width: 94%
+
+      input[type='checkbox']
+        display: none
+
+      label
+        display: inline-block
+        cursor: pointer
+        width: 60px
+        font-weight: 600
+        padding: 5px 0
+        transition: background 0.5s linear
+        border-radius: 2px
+        box-sizing: border-box
+        border: 1px solid #fff
+      input[type='checkbox']:not(:checked)+label
+        border: 1px dashed #fff
+      input[type='checkbox']:checked+label
+        background: #fff
+        color: #4688f1
+</style>

@@ -2,9 +2,9 @@
   <div id="app">
     <menu>
       <nav>
-        <router-link to="/">首页</router-link>
-        <router-link to="/update">日志</router-link>
-        <router-link to="/about">关于</router-link>
+        <router-link to="/">空闲教室</router-link>
+        <!--<router-link to="/update">日志</router-link>
+        <router-link to="/about">关于</router-link>-->
         <a href="https://trend.magicallu.cn/">那些事儿</a>
         <a href="https://free.magicallu.cn/">情侣课表</a>
         <a href="#">敬请期待</a>
@@ -90,6 +90,8 @@ ul
       &:hover
         transition: all .4s ease
         color: #4688f1
+      &:last-child
+        margin-right: 0
 
   .fade-enter-active, .fade-leave-active
     transition: all .2s ease
@@ -103,6 +105,9 @@ ul
 
     nav
       width: 94% !important
+      a
+        font-size: 13px
+        margin-right: 10px
 
     .item-list
       width: 94%

@@ -3,7 +3,7 @@
     <header>
       <h1>湘大空闲教室</h1>
       <p>数据来源于湘大教务系统 (数据有误 == 学校的锅)</p>
-      <p>技巧:下方按钮以及绿色按钮都可点按</p>
+      <p>提示:下方按钮以及绿色按钮都可点按</p>
       <p>即将迎来大版本变动，请坐稳... 再次感谢你们的支持!!!</p>
 
       <div class="selector">
@@ -36,12 +36,6 @@ export default {
     }
   },
 
-  // computed: {
-  //   // itemListType () {
-  //   //   return this.$store.state.itemListType
-  //   // }
-  // },
-
   watch: {
     itemListDay (value) {
       this.$store.dispatch('FETCH_LIST_DATA', {
@@ -71,13 +65,16 @@ $mobile-width = 768px
     background: linear-gradient(to bottom, #5793f2, #4688f1)
     color: #fff
     text-align: center
-    padding: 40px 0 50vh
-    margin-bottom: -50vh
+    padding: 30px 0 34vh
+    margin-bottom: -34vh
     box-sizing: border-box
 
     h1
       font-size: 40px
       text-shadow: -2px 2px 0 rgba(0,0,0,.1)
+
+    p
+      font-size: 14px
 
     .selector
       display: block

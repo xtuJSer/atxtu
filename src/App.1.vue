@@ -47,7 +47,6 @@
 <script>
 import axios from 'axios'
 import { classroomURL } from './config'
-// import mockData from '../mock.js'
 import { formatData, sortData } from './filter'
 
 import ItemCardText from './components/ItemCardText'
@@ -61,22 +60,10 @@ export default {
 
   data () {
     return {
-      itemList: null,
-      isLoading: true,
-      itemListDay: 0,             // 默认为今天
-      itemListType: 1             // 默认为文字类型，即获取 time 类型的数据
     }
   },
 
   computed: {
-    // calcDay () {
-    //   let day = new Date()
-    //   return day.getFullYear() + '年' + (day.getMonth() + 1) + '月' + (day.getDate() + this.itemListDay) + '日 ' + this.getDay
-    // },
-    // getDay () {
-    //   let day = ['日', '一', '二', '三', '四', '五', '六']
-    //   return '周' + day[(new Date().getDay() + this.itemListDay) % 7]
-    // }
   },
 
   beforeMount () {

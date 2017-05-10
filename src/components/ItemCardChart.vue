@@ -201,5 +201,5 @@ export default {
     transition: all .05s ease-in
   .fade-enter, .fade-leave-active
     opacity: 0
-    transform: translateY(-10%)
+    transform: translateY(-5%)
 </style>

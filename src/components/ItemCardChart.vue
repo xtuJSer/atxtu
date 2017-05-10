@@ -1,8 +1,8 @@
 <template>
-  <li class="item-card-chart">
+  <li class="item-card-chart" @click="status || (status = !status)">
     <div class="tool-bar">
-      <span class="show-card" :class="[ status ? 'icon-minimize' : 'icon-maximize' ]"  @click="status = !status">
-        {{ status ? '折叠' : '展开' }}
+      <span class="show-card" :class="[ status ? 'icon-minimize' : 'icon-maximize' ]"  @click.stop="status = !status">
+        {{ status ? '折叠' : '点卡片展开' }}
       </span>
       <!--<span class="icon-heart" style="color: #d85a63"></span>-->
     </div>

@@ -47,7 +47,7 @@ export default {
   data () {
     return {
       time: ['1-2', '3-4', '5-6', '7-8', '9-10'],
-      switchTime: [],
+      switchTime: [false, false, false, false, false],
       list: '',
       msg: '',
       status: false
@@ -69,17 +69,14 @@ export default {
 
       if (hasTrue) {
         if (hasFalse) {
-          // this.switchTime.fill(true)
           this.switchTime = this.switchTime.map(el => true)
         } else {
-          // this.switchTime.fill(false)
           this.switchTime = this.switchTime.map(el => false)
           this.list = JSON.parse(JSON.stringify(this.item))
         }
       } else {
         this.switchTime = this.switchTime.map(el => true)
       }
-      // this.switchTime.fill(false)
       // this.list = JSON.parse(JSON.stringify(this.item))
     },
     siftTime (time) {
@@ -101,7 +98,8 @@ export default {
 
   created () {
     this.switchTime.length = 5
-    this.switchTime.fill(false)
+    // this.switchTime.fill(false)
+    // this.switchTime = this.switchTime.map(el => false)
   },
 
   beforeMount () {

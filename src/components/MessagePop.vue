@@ -32,7 +32,7 @@ export default {
       this.timer = setTimeout(() => {
         clearTimeout(this.timer)
         this.$store.commit('HIDE_MESSAGE')
-      }, 2500)
+      }, 3000)
     }
   }
 }

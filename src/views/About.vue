@@ -38,6 +38,14 @@
           </div>
         </div>
 
+        <div class="section">
+          <h3>关于数据可靠性</h3>
+          <div class="content">
+            <p>数据来源于教务系统，若与实际情况不符，嗯.. 我也很无奈。只能把希望寄托于学校能继续完善数据了。</p>
+            <p>更新时间是在每天凌晨0:01:23，若在此之前无法查看第二天的教室情况，请静候。若过了这个时间点，依然不显示，请轻拍我（<a href="http://weibo.com/magicalWei/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1">微博私信</a>）</p>
+          </div>
+        </div>
+
       </figcaption>
     </figure>
   </section>
@@ -79,6 +87,7 @@ $mobile-width = 768px
         padding: 20px
         line-height: 24px
         text-indent: 2rem
+        font-size: 14px
         font-weight: 400
         letter-spacing: .075rem
         a

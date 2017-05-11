@@ -57,7 +57,8 @@ export default {
   watch: {
     switchTime (time) {
       this.siftTime(time)
-      console.log(time)
+
+      this.$store.dispatch('FETCH_MESSAGE', { itemLength: this.list.details.length })
     }
   },
 
@@ -95,7 +96,6 @@ export default {
           }
         }
       })
-      this.list.details.length === 0 ? this.msg = '不存在的' : this.msg = ''
     }
   },
 

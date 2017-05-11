@@ -29,6 +29,6 @@ export const fetchMessage = (itemLength) => {
     data: { itemLength },
     withCredentials: true
   })
-  .then(res => res.message)
+  .then(res => res.data.message)
   .catch(err => { throw new Error(err) })
 }

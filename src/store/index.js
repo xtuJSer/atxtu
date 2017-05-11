@@ -11,7 +11,7 @@ const store = new Vuex.Store({
     isLoading: true,
     itemListDay: 0,             // 默认为今天
     itemListType: 1,            // 默认为文字类型，即获取 time 类型的数据,
-    messageList: []
+    message: ''
   },
 
   actions: {
@@ -29,10 +29,9 @@ const store = new Vuex.Store({
         throw new Error(e)
       }
     },
-    FETCH_MESSAGE: async ({ commit, state }, { length }) => {
+    FETCH_MESSAGE: async ({ commit, state }, { itemLength }) => {
       commit('SET_MESSAGE', {
-        message: await fetchMessage(),
-        length
+        message: await fetchMessage(itemLength)
       })
     }
   },
@@ -50,9 +49,8 @@ const store = new Vuex.Store({
     SET_LOADING: (state, { isLoading }) => {
       state.isLoading = isLoading
     },
-    SET_MESSAGE: (state, { message, length }) => {
-      state.messageList = message
-      state.curMessage
+    SET_MESSAGE: (state, { message }) => {
+      state.message = message
     }
   },
 

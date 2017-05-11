@@ -1,6 +1,6 @@
 <template>
   <section class="message-pop">
-    <h3>message</h3>
+    <p>{{ message }}</p>
   </section>
 </template>
 
@@ -8,20 +8,32 @@
 export default {
   name: 'message-pop',
 
-  beforeMounted () {
-    console.log('fuck')
+  computed: {
+    message () {
+      return this.$store.state.message
+    }
+  },
+
+  watch: {
+    message (val) {
+
+    }
   }
 }
 </script>
 
 <style lang="stylus">
 .message-pop
-  position: absolute
+  position: fixed
   bottom: 0
-  left: -50%
+  left: 50%
   transform: translateX(-50%)
-  background: #4688f1
+  background: rgba(69, 86, 96, .8)
   color: #fff
-  width: 400px
+  width: 384px
+  padding: 20px
+  box-sizing: border-box
+  border-radius: 3px
+
 
 </style>

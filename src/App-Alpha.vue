@@ -17,12 +17,14 @@
     </transition>
 
     <Loading :isLoading="isLoading"></Loading>
+    <message-pop :showMessage="showMessage"></message-pop>
   </div>
 </template>
 
 <script>
 import Loading from './components/Loading'
 import './public/style/icon.css'
+import MessagePop from './components/MessagePop'
 
 export default {
   name: 'app',
@@ -30,6 +32,9 @@ export default {
   computed: {
     isLoading () {
       return this.$store.state.isLoading
+    },
+    showMessage () {
+      return this.$store.state.showMessage
     }
   },
 
@@ -41,7 +46,8 @@ export default {
   },
 
   components: {
-    Loading
+    Loading,
+    MessagePop
   }
 }
 </script>
@@ -138,4 +144,6 @@ ul
       padding: 3% 0 !important
     .about figure
       margin-bottom: 3%
+    .message-pop
+      width: 300px
 </style>

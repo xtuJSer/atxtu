@@ -17,7 +17,7 @@
         <div class="section">
           <h3>关于词条</h3>
           <div class="content">
-            <p>如果那些随机出现的词条成功的引起了你的注意，是否也想把你的话贴在这个学校一角呢？欢迎投稿（<a href="http://weibo.com/magicalWei/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1">微博私信</a>）要求如下：</p>
+            <p>如果那些随机出现的词条成功的引起了你的注意，是否也想把你的只言片语贴在这学校的一角呢？欢迎投稿（<a href="http://weibo.com/magicalWei/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1">微博私信</a>）要求如下：</p>
             <br>
             <ul>
               <li>1、不轻易开车 Σ（ﾟдﾟlll）</li>
@@ -26,6 +26,8 @@
               <li>4、积极向上，正能量</li>
               <li>5、符合社会主义核心价值观 ╮(￣▽￣"")╭</li>
             </ul>
+            <br>
+            <p>ps：似乎有些机型不能跳转至微博页，手动搜一下我的微博名吧，给您带来不便深表歉意。</p>
           </div>
         </div>
 

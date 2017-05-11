@@ -1,6 +1,9 @@
 const path = require('path')
+const compression = require('compression')
 const express = require('express')
 const app = express()
+
+app.use(compression())
 
 const isDev = process.env.NODE_ENV === 'dev'
 const rootSrc = isDev

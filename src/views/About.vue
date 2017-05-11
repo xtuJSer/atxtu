@@ -48,7 +48,7 @@ $mobile-width = 768px
     text-align: center
     background: #fff
     color: #333
-    margin: 100px auto 30px
+    margin: 90px auto 30px
     border-radius: 2px
     box-shadow: 1px 2px 5px rgba(0,0,0, .1)
     min-height: 50vh

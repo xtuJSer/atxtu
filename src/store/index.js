@@ -11,7 +11,7 @@ const store = new Vuex.Store({
     itemList: [],
     isLoading: true,
     itemListDay: 0,             // 默认为今天
-    itemListType: 1             // 默认为文字类型，即获取 time 类型的数据
+    itemListType: 1            // 默认为文字类型，即获取 time 类型的数据,
   },
 
   actions: {

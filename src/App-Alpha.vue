@@ -10,9 +10,9 @@
       </nav>
     </menu>
 
-    <!--<transition name="fade">-->
+    <transition name="fade" mode="out-in">
     <router-view></router-view>
-    <!--</transition>-->
+    </transition>
 
     <Loading :isLoading="isLoading"></Loading>
   </div>
@@ -103,7 +103,7 @@ ul
     padding: 30px 0 34vh
     margin-bottom: -34vh
     box-sizing: border-box
-    max-height: 500px
+    max-height: 480px
     overflow: hidden
 
     h1
@@ -115,7 +115,7 @@ ul
       font-weight: 500
 
   .fade-enter-active, .fade-leave-active
-    transition: all .2s ease
+    transition: all .14s ease
   .fade-enter, .fade-leave-active
     opacity: 0
 

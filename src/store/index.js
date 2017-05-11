@@ -11,7 +11,8 @@ const store = new Vuex.Store({
     isLoading: true,
     itemListDay: 0,             // 默认为今天
     itemListType: 1,            // 默认为文字类型，即获取 time 类型的数据,
-    message: ''
+    message: '',
+    showMessage: false
   },
 
   actions: {
@@ -51,6 +52,10 @@ const store = new Vuex.Store({
     },
     SET_MESSAGE: (state, { message }) => {
       state.message = message
+      state.showMessage = true
+    },
+    HIDE_MESSAGE: (state) => {
+      state.showMessage = false
     }
   },
 

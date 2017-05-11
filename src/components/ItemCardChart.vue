@@ -57,6 +57,7 @@ export default {
   watch: {
     switchTime (time) {
       this.siftTime(time)
+      console.log(time)
     }
   },
 

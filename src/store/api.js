@@ -1,9 +1,10 @@
 import axios from 'axios'
+import { classroomURL, messageURL } from '../config'
 const { sortData, formatData } = require('../filter')
 
-export const fetchData = (url, day, byName) => {
+export const fetchData = (day, byName) => {
   return axios({
-    url,
+    url: classroomURL,
     method: 'post',
     data: {
       day,
@@ -19,4 +20,15 @@ export const fetchData = (url, day, byName) => {
     }
   })
   .catch(err => err)
+}
+
+export const fetchMessage = (itemLength) => {
+  return axios({
+    url: messageURL,
+    method: 'post',
+    data: { itemLength },
+    withCredentials: true
+  })
+  .then(res => res.message)
+  .catch(err => { throw new Error(err) })
 }

@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { fetchData } from './api'
-import { classroomURL } from '../config'
+import { fetchData, fetchMessage } from './api'
 
 Vue.use(Vuex)
 
@@ -11,7 +10,8 @@ const store = new Vuex.Store({
     itemList: [],
     isLoading: true,
     itemListDay: 0,             // 默认为今天
-    itemListType: 1            // 默认为文字类型，即获取 time 类型的数据,
+    itemListType: 1,            // 默认为文字类型，即获取 time 类型的数据,
+    messageList: []
   },
 
   actions: {
@@ -22,12 +22,18 @@ const store = new Vuex.Store({
 
       try {
         commit('SET_LIST_DATA', {
-          list: await fetchData(classroomURL, day, byName)
+          list: await fetchData(day, byName)
         })
         commit('SET_LOADING', { isLoading: false })
       } catch (e) {
         throw new Error(e)
       }
+    },
+    FETCH_MESSAGE: async ({ commit, state }, { length }) => {
+      commit('SET_MESSAGE', {
+        message: await fetchMessage(),
+        length
+      })
     }
   },
 
@@ -43,6 +49,10 @@ const store = new Vuex.Store({
     },
     SET_LOADING: (state, { isLoading }) => {
       state.isLoading = isLoading
+    },
+    SET_MESSAGE: (state, { message, length }) => {
+      state.messageList = message
+      state.curMessage
     }
   },
 

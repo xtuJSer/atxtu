@@ -4,9 +4,9 @@
       <nav>
         <router-link to="/" exact>空闲教室</router-link>
         <!--<router-link to="/update">日志</router-link>-->
-        <router-link to="/about" exact>关于</router-link>
         <a href="https://trend.magicallu.cn/">那些事儿</a>
         <a href="https://free.magicallu.cn/">情侣课表</a>
+        <router-link to="/about" exact>关于</router-link>
       </nav>
     </menu>
 

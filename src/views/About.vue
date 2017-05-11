@@ -14,18 +14,20 @@
           <!--<span>会写代码的男孩运气不会太差</span>-->
         </div>
 
-        <!--<div class="section">
+        <div class="section">
           <h3>关于词条</h3>
           <div class="content">
             <p>如果那些随机出现的词条成功的引起了你的注意，是否也想把你的话贴在这个学校一角呢？欢迎投稿（<a href="http://weibo.com/magicalWei/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1">微博私信</a>）要求如下：</p>
+            <br>
             <ul>
               <li>1、不轻易开车 Σ（ﾟдﾟlll）</li>
-              <li>2、可表白 (/ω＼)（把这个网站推荐给喜欢的人吧，系统会在你们自习的当天适当增加出现概率</li>
-              <li>3、积极向上，正能量</li>
-              <li>4、符合社会主义核心价值观 ╮(￣▽￣"")╭</li>
+              <li>2、不打广告 Σ（ﾟдﾟlll）</li>
+              <li>3、可表白 (/ω＼)（把这个网站推荐给喜欢的人吧，系统会在你们自习的当天适当增加出现概率</li>
+              <li>4、积极向上，正能量</li>
+              <li>5、符合社会主义核心价值观 ╮(￣▽￣"")╭</li>
             </ul>
           </div>
-        </div>-->
+        </div>
 
         <div class="section">
           <h3>关于网站</h3>
@@ -54,7 +56,7 @@ $mobile-width = 768px
     min-height: 50vh
     img
       border-radius: 50%
-      margin-top: -50px
+      margin-top: -60px
 
   figcaption
     .weibo

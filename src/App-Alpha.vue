@@ -11,7 +11,9 @@
     </menu>
 
     <transition name="fade" mode="out-in">
-    <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </transition>
 
     <Loading :isLoading="isLoading"></Loading>
@@ -130,10 +132,10 @@ ul
         font-size: 13px
         margin-right: 10px
 
-    .item-list
-      width: 94%
-      padding: 3% 0
-
+    .item-list,
     .about figure
       width: 94%
+      padding: 3% 0 !important
+    .about figure
+      margin-bottom: 3%
 </style>

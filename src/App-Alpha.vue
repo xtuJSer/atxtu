@@ -2,16 +2,17 @@
   <div id="app">
     <menu>
       <nav>
-        <router-link to="/">空闲教室</router-link>
+        <router-link to="/" exact>空闲教室</router-link>
         <!--<router-link to="/update">日志</router-link>-->
-        <router-link to="/about">关于</router-link>
+        <router-link to="/about" exact>关于</router-link>
         <a href="https://trend.magicallu.cn/">那些事儿</a>
         <a href="https://free.magicallu.cn/">情侣课表</a>
-        <a href="#">敬请期待</a>
       </nav>
     </menu>
 
+    <!--<transition name="fade">-->
     <router-view></router-view>
+    <!--</transition>-->
 
     <Loading :isLoading="isLoading"></Loading>
   </div>
@@ -92,6 +93,8 @@ ul
         color: #4688f1
       &:last-child
         margin-right: 0
+      &.router-link-active
+        color: #4688f1
 
   header
     background: linear-gradient(to bottom, #5793f2, #4688f1)
@@ -108,7 +111,8 @@ ul
       text-shadow: -2px 2px 0 rgba(0,0,0,.1)
 
     p
-      font-size: 14px
+      font-size: 15px
+      font-weight: 500
 
   .fade-enter-active, .fade-leave-active
     transition: all .2s ease
@@ -129,4 +133,7 @@ ul
     .item-list
       width: 94%
       padding: 3% 0
+
+    .about figure
+      width: 94%
 </style>

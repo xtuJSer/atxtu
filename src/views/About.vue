@@ -15,6 +15,14 @@
         </div>
 
         <div class="section">
+          <h3>关于不开门的教室</h3>
+
+          <div class="content">
+            <p>友情提示：据悉，在周末，逸夫楼大部分的无课教室并不开放，望周知 😥~</p>
+          </div>
+        </div>
+
+        <div class="section">
           <h3>关于词条</h3>
           <div class="content">
             <p>如果那些随机出现的词条成功的引起了你的注意，是否也想把你的只言片语贴在这学校的一角呢？欢迎投稿（<a href="http://weibo.com/magicalWei/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1">微博私信</a>）要求如下：</p>

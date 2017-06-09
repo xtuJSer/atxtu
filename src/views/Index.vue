@@ -4,6 +4,7 @@
       <h1>湘大空闲教室</h1>
       <p>数据来源于湘大教务系统</p>
       <p>提示:下方蓝白按钮以及绿色按钮都可点按</p>
+      <p>又一个大新闻:由于南门光钎挖断了，外网无法访问教务系统，以下数据在网络正常之前并不可靠，给您带来不便深感歉意！！！_(:зゝ∠)_</p>
 
       <div class="selector">
         <input id="switchType" type="checkbox" :checked="itemListType" v-model="itemListType">

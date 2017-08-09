@@ -4,8 +4,7 @@
       <h1>湘大空闲教室</h1>
       <p>数据来源于湘大教务系统</p>
       <p>提示:下方蓝白按钮以及绿色按钮都可点按</p>
-      <p>广告:全系列应用将在七月初迎来大版本更新，敬请期待，祝考试好运。</p>
-      <p>通知:即日起部分教学楼将陆续封闭，图书馆约一波？</p>
+      <p>暑假愉快 推广：<a href="http://xtutx.magicallu.cn/">XTUTX</a></p>
 
       <div class="selector">
         <input id="switchType" type="checkbox" :checked="itemListType" v-model="itemListType">

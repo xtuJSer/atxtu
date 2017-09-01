@@ -7,11 +7,13 @@ import HomeHeader from '@/components/HomeHeader'
 
 import * as roomActions from '@/actions/room'
 
+import './style.styl'
+
 class Home extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      page: 'Home',
+      title: 'atXTU',
       // TODO: 公告：[]，将在主页阶段加载
       content: [
         '内容 0',
@@ -26,18 +28,14 @@ class Home extends Component {
   render () {
     return (
       <section className="home">
-        <h2>{this.state.page}</h2>
-
-        <HomeHeader />
-        <Bulletion
-          content={this.state.content}
-        />
+        <HomeHeader title={this.state.title} />
+        <Bulletion content={this.state.content} />
       </section>
     )
   }
 }
 
 export default connect(
-  () => ({}),
+  state => ({}),
   dispatch => ({ roomActions: bindActionCreators(roomActions, dispatch) })
 )(Home)

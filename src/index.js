@@ -1,11 +1,21 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { hashHistory } from 'react-router'
+// import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+// import App from './containers'
+import initStore from './store'
+import RouteMap from './router'
+
+import registerServiceWorker from './registerServiceWorker'
+
+const store = initStore()
 
 render(
-  <App />,
+  <Provider store={store}>
+    <RouteMap history={hashHistory} />
+  </Provider>,
   document.querySelector('#root')
 )
 

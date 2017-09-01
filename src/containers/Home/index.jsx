@@ -14,7 +14,11 @@ class Home extends Component {
 
   render () {
     console.log(this.props.room)
-    return <h2>{this.state.page}</h2>
+    return (
+      <section className="home">
+        <h2>{this.state.page}</h2>
+      </section>
+    )
   }
 }
 

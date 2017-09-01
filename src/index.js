@@ -2,19 +2,22 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { hashHistory } from 'react-router'
-// import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { syncHistoryWithStore } from 'react-router-redux'
 
-// import App from './containers'
+import 'normalize.css'
+import './static/css/app.styl'
+
 import initStore from './store'
 import RouteMap from './router'
 
 import registerServiceWorker from './registerServiceWorker'
 
 const store = initStore()
+const history = syncHistoryWithStore(hashHistory, store)
 
 render(
   <Provider store={store}>
-    <RouteMap history={hashHistory} />
+    <RouteMap history={history} />
   </Provider>,
   document.querySelector('#root')
 )

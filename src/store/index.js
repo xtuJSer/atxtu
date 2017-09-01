@@ -1,6 +1,5 @@
 import { createStore } from 'redux'
 import rootReducer from '../reducers'
-// import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 export default initialState => {
   return createStore(

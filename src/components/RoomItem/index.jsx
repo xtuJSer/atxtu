@@ -68,10 +68,15 @@ class RoomItem extends Component {
     const { sift, time, init } = this.state
 
     return (
-      <li className="room-item card" style={{ display: init ? 'block' : 'none' }}>
-        <h3 className="title" onClick={ this.toggleShow.bind(this) }>{ name }</h3>
+      <li style={{ display: init ? 'block' : 'none' }}
+        className={ `room-item card ${ this.state.show ? 'active' : '' }`
+      }>
+        <div className="title" onClick={ this.toggleShow.bind(this) }>
+          <h3>{ name }</h3>
+          <p>{ rooms.length + '/' + this.props.data.rooms.length }</p>
+        </div>
 
-        <div className={ `content ${ this.state.show ? 'active' : '' }` }>
+        <div className="content">
           <table>
             <thead>
               <tr>

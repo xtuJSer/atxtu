@@ -1,5 +1,12 @@
 $font-color = #586069
 $theme-color = #4688f1
+$bg-color = #f7f8fa
+$link-color = #42b983
+$selection-color = #fff
+$card-color = #fff
+
+$mobile-width = 768px
+$card-shadow = 1px 2px 5px rgba(0,0,0, .1)
 
 *
   padding 0
@@ -10,6 +17,38 @@ $theme-color = #4688f1
 a
   color $theme-color
   text-decoration none
+  &:link, &:visited
+  &:hover, &:active
+    color $link-color
 
 ul
   list-style none
+
+::selection
+  background $theme-color
+  color $selection-color
+
+.page
+  width 100%
+  min-height 100vh
+  background $bg-color
+
+.container
+  width $mobile-width
+  @media (max-width $mobile-width)
+    width 96%
+
+.card
+  width: 100%
+  padding: 10px
+  margin-bottom: 10px
+  box-shadow: $card-shadow
+  background: $card-color
+  box-sizing: border-box
+  border-radius: 2px
+  transition: all 1s ease
+  &:last-child
+    margin-bottom: 0
+  h2, h3, h4
+    text-align: center
+    padding: 10px 0

@@ -13,9 +13,8 @@ class NotFound extends Component {
   }
 
   render () {
-    console.log(this.props.room)
     return (
-      <section className="not-found">
+      <section className="not-found page">
         <h2>{this.state.page}</h2>
       </section>
     )

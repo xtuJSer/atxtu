@@ -10,7 +10,7 @@ import './static/css/app.styl'
 import initStore from './store'
 import RouteMap from './router'
 
-import registerServiceWorker from './registerServiceWorker'
+// import registerServiceWorker from './registerServiceWorker'
 
 const store = initStore()
 const history = syncHistoryWithStore(hashHistory, store)
@@ -22,4 +22,4 @@ render(
   document.querySelector('#root')
 )
 
-registerServiceWorker()
+// registerServiceWorker()

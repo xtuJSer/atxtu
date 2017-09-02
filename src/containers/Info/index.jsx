@@ -2,27 +2,31 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import * as roomActions from '@/actions/room'
+import PageNav from '@/components/PageNav'
 
-class Info extends Component {
+import * as infoActions from '@/actions/info'
+
+class info extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      page: 'Info'
+      title: '今日校园'
     }
   }
 
   render () {
-    console.log(this.props.room)
+    console.log(this.props.info)
     return (
-      <section className="info">
-        <h2>{this.state.page}</h2>
+      <section className="info page">
+        <PageNav
+          title={ this.state.title }
+        />
       </section>
     )
   }
 }
 
 export default connect(
-  state => ({ room: state.room }),
-  dispatch => ({ roomActions: bindActionCreators(roomActions, dispatch) })
-)(Info)
+  state => ({ info: state.info }),
+  dispatch => ({ infoActions: bindActionCreators(infoActions, dispatch) })
+)(info)

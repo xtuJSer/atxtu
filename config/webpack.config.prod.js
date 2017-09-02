@@ -167,7 +167,7 @@ module.exports = {
           // use the "style" loader inside the async code so CSS from them won't be
           // in the main CSS file.
           {
-            test: /\.(css|stylus)$/,
+            test: /\.(css|styl)$/,
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
@@ -201,7 +201,10 @@ module.exports = {
                         ],
                       },
                     },
-                    require.resolve('stylus-loader')
+                    {
+                      loader: require.resolve('stylus-loader'),
+                      options: { sourceMap: false }
+                    }
                   ],
                 },
                 extractTextPluginOptions

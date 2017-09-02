@@ -1,0 +1,23 @@
+$nav-shadow = 0 0 2px rgba(0, 0, 0, .4)
+$nav-color = #fff
+
+.page-nav
+  box-shadow $nav-shadow
+  background $nav-color
+  .container
+    position relative
+    height 60px
+    margin 0 auto
+    box-sizing border-box
+    overflow hidden
+    & > *
+      position absolute
+      line-height 60px
+    a
+      &:first-of-type
+        left 0
+      &:last-of-type
+        right 0
+    .title
+      left 50%
+      transform translateX(-50%)

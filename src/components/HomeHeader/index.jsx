@@ -7,10 +7,11 @@ class HomeHeader extends Component {
   render () {
     return (
       <header>
-        <h2>{this.props.title}</h2>
-        <div>
+        <h2 className="title">{this.props.title}</h2>
+
+        <div className="link">
           <Link to="room">空闲教室</Link>
-          <Link to="info">湘大资讯</Link>
+          <Link to="info">今日校园</Link>
         </div>
       </header>
     )

@@ -1,0 +1,23 @@
+.page-nav
+  .container
+    display flex
+    justify-content center
+    align-items center
+    padding 20px 0
+    box-sizing border-box
+    width 70%
+    margin 0 auto
+    overflow hidden
+    a
+      display block
+      color #d85a63
+      flex-basis 20%
+      &:first-of-type
+        text-align left
+      &:last-of-type
+        text-align right
+    .title
+      flex 1
+      text-align center
+    @media (max-width 768px)
+      width 96%

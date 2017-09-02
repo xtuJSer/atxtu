@@ -4,15 +4,13 @@ class Bulletion extends Component {
   render () {
     return (
       <article>
-        <ul>
           {
             this.props.content.map((el, i) => (
-              <li key={i}>
+              <div key={i}>
                 <p>{el}</p>
-              </li>
+              </div>
             ))
           }
-        </ul>
       </article>
     )
   }

@@ -2,21 +2,25 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import PageNav from '@/components/PageNav'
+
 import * as roomActions from '@/actions/room'
 
 class Room extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      page: 'Room'
+      title: '空闲教室'
     }
   }
 
   render () {
     console.log(this.props.room)
     return (
-      <section className="room">
-        <h2>{this.state.page}</h2>
+      <section className="room page">
+        <PageNav
+          title={ this.state.title }
+        />
       </section>
     )
   }

@@ -27,7 +27,7 @@ class Home extends Component {
 
   render () {
     return (
-      <section className="home">
+      <section className="home page">
         <HomeHeader title={this.state.title} />
         <Bulletion content={this.state.content} />
       </section>
@@ -36,6 +36,6 @@ class Home extends Component {
 }
 
 export default connect(
-  state => ({}),
+  null,
   dispatch => ({ roomActions: bindActionCreators(roomActions, dispatch) })
 )(Home)

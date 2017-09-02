@@ -17,7 +17,6 @@ class Room extends Component {
   }
 
   componentDidMount () {
-    console.log(this.props)
   }
 }
 

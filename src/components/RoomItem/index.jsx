@@ -6,7 +6,6 @@ class RoomItem extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      init: false,
       show: false,
       sift: Array.apply(null, new Array(5)).map(() => false),
       time: Array.apply(null, new Array(5)),
@@ -59,18 +58,12 @@ class RoomItem extends Component {
     this.setState({ show: !this.state.show })
   }
 
-  componentDidMount () {
-    this.setState({ init: true })
-  }
-
   render () {
     const { name, rooms } = this.state.backup
-    const { sift, time, init } = this.state
+    const { sift, time } = this.state
 
     return (
-      <li style={{ display: init ? 'block' : 'none' }}
-        className={ `room-item card ${ this.state.show ? 'active' : '' }`
-      }>
+      <li className={ `room-item card ${ this.state.show ? 'active' : '' } `}>
         <div className="title" onClick={ this.toggleShow.bind(this) }>
           <h3>{ name }</h3>
           <p>{ rooms.length + '/' + this.props.data.rooms.length }</p>

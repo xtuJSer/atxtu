@@ -1,14 +1,41 @@
 .room-item
+  transition all 1s ease-in
+  // opacity 0
+  // transform translateY(-20px)
+  // &.init
+  //   opacity 1
+  //   transform translateY(0)
+  &.active
+    .content
+      height auto
+      opacity 1
+      transform translateY(0)
+
   .title
+    display flex
+    align-items center
+    justify-content center
+    flex-direction column
     cursor pointer
+    padding 0 0 10px
+    h3
+      padding-bottom 5px
+    p
+      font-size 12px
+      font-weight 800
+    @media (max-width 768px)
+      padding 10px 0
+      flex-direction row
+      justify-content space-between
+      h3
+        padding 0
+
   .content
     opacity 0
     height 0
+    transform translateY(-20px)
     overflow hidden
     transition all .2s ease-in
-    &.active
-      height auto
-      opacity 1
     table
       border-top 2px dashed #eee
       padding-top 20px
@@ -16,6 +43,7 @@
       tr
         text-align center
         min-height 26px
+        font-size 14px
         @media (max-width 768px)
           font-size 13px
         th

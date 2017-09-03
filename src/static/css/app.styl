@@ -11,8 +11,11 @@ $card-shadow = 1px 2px 5px rgba(0,0,0, .1)
 *
   padding 0
   margin 0
+
+body, html
   color $font-color
   font-family sans-serif
+  -webkit-font-smoothing antialiased
 
 a
   color $theme-color
@@ -37,6 +40,13 @@ ul
   width $mobile-width
   @media (max-width $mobile-width)
     width 96%
+
+span.link-btn, a.link-btn
+  color $link-color
+  cursor pointer
+  font-weight 800
+  font-size 15px
+
 
 .card
   width: 100%

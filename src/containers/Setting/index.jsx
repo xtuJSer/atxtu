@@ -14,10 +14,17 @@ class Room extends Component {
     }
   }
 
+  componentDidMount () {
+    // console.log(this.props.location.state.from)
+  }
+
   render () {
     return (
       <section className="room page">
-        <PageNav title={ this.state.title } />
+        <PageNav
+          title={ this.state.title }
+          from={ this.props.location.state && this.props.location.state.from }
+        />
       </section>
     )
   }

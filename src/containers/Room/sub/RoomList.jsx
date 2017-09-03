@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import RoomItem from '@/components/RoomItem'
-import Loading from '@/components/Loading'
+// import Loading from '@/components/Loading'
 import '../style.styl'
 
 class RoomList extends Component {
@@ -9,7 +9,8 @@ class RoomList extends Component {
     super(props)
     this.state = {
       data: [],
-      isLoaded: false
+      isLoaded: false,
+      timer: null
     }
   }
 
@@ -17,7 +18,7 @@ class RoomList extends Component {
     return (
       <ul className="room-list container">
         { this.state.data.map((item, i) => <RoomItem key={ i } data={ item } />) }
-        { Loading(this.state) }
+        {/* Loading(this.state) */}
       </ul>
     )
   }
@@ -34,7 +35,6 @@ class RoomList extends Component {
       }
       while (sLen + count > pLen) { count-- }
 
-      // this.setState({ data: [...sData, pData[sData.length]] })
       this.setState(
         { data: [...sData, ...pData.slice(sLen, sLen + count)] },
         this.itemLoop(this.loadItem(3))
@@ -44,7 +44,10 @@ class RoomList extends Component {
 
   itemLoop (fn, time = 100) {
     if (this.isLoaded) { return }
-    fn && setTimeout(() => fn(this.itemLoop), time)
+    if (fn) {
+      let timer = setTimeout(() => fn(this.itemLoop), time)
+      this.setState({ timer })
+    }
   }
 
   componentDidMount () {
@@ -55,7 +58,8 @@ class RoomList extends Component {
   }
 
   componentWillUnmount () {
-    // window.removeEventListener('scroll')
+    const { timer } = this.state
+    clearTimeout(timer)
   }
 
   // throttle (fn, l = 100, r) {

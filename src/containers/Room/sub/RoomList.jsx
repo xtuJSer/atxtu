@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import RoomItem from '@/components/RoomItem'
+import Loading from '@/components/Loading'
 import '../style.styl'
 
 class RoomList extends Component {
@@ -16,6 +17,7 @@ class RoomList extends Component {
     return (
       <ul className="room-list container">
         { this.state.data.map((item, i) => <RoomItem key={ i } data={ item } />) }
+        { Loading(this.state) }
       </ul>
     )
   }
@@ -25,7 +27,7 @@ class RoomList extends Component {
       let { data: sData, data: { length: sLen } } = this.state
       let { data: pData, data: { length: pLen } } = this.props
 
-      console.log(sLen, pLen)
+      // console.log(sLen, pLen)
       if (sLen === pLen) {
         this.setState({ isLoaded: true })
         return
@@ -56,23 +58,23 @@ class RoomList extends Component {
     // window.removeEventListener('scroll')
   }
 
-  throttle (fn, l = 100, r) {
-    let pre = Date.now()
-    let timer = null
-    // let isFirst = true
+  // throttle (fn, l = 100, r) {
+  //   let pre = Date.now()
+  //   let timer = null
+  //   // let isFirst = true
 
-    return () => {
-      if (timer) { clearTimeout(timer) }
-      let now = Date.now()
+  //   return () => {
+  //     if (timer) { clearTimeout(timer) }
+  //     let now = Date.now()
 
-      if (now - pre > l) {
-        pre = now
-        fn()
-      } else {
-        r && (timer = setTimeout(() => fn(), r))
-      }
-    }
-  }
+  //     if (now - pre > l) {
+  //       pre = now
+  //       fn()
+  //     } else {
+  //       r && (timer = setTimeout(() => fn(), r))
+  //     }
+  //   }
+  // }
 }
 
 export default RoomList

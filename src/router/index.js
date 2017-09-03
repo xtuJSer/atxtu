@@ -5,6 +5,7 @@ import App from '../containers'
 import Home from '../containers/Home'
 import Room from '../containers/Room'
 import Info from '../containers/Info'
+import Setting from '../containers/Setting'
 import NotFound from '../containers/NotFound'
 
 class RouteMap extends Component {
@@ -24,6 +25,7 @@ class RouteMap extends Component {
                 <Route path="/college" component={College}></Route>
             */}
           </Route>
+          <Route path='/setting' component={Setting}/>
           <Route path='*' component={NotFound}/>
         </Route>
       </Router>
